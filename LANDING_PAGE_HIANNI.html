@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Hianni Roscele | Odontopediatria de Luxo e Afeto</title>
+    <!-- Favicon de Respeito (Emoji Tooth SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E🦷%3C/text%3E%3C/svg%3E">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magic: { 
+                            teal: '#00C2CB', 
+                            pink: '#FF9EAA', 
+                            yellow: '#FFD93D', 
+                            purple: '#4A306D', 
+                            bg: '#FDFBF7' 
+                        }
+                    },
+                    fontFamily: { 
+                        kids: ['"Fredoka"', 'sans-serif'], 
+                        sans: ['"Outfit"', 'sans-serif'], 
+                        serif: ['"Playfair Display"', 'serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FDFBF7; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border: 2px solid rgba(255, 255, 255, 0.4); }
+        
+        .magic-face { position: relative; display: inline-block; margin-left: 10px; width: 40px; height: 30px; vertical-align: middle; }
+        .m-eye { width: 8px; height: 10px; background: #4A306D; border-radius: 50%; position: absolute; top: 0; animation: blink 3s infinite; }
+        .m-eye.left { left: 5px; } .m-eye.right { right: 5px; }
+        .m-smile { width: 20px; height: 8px; border-bottom: 3px solid #4A306D; border-radius: 50%; position: absolute; bottom: 5px; left: 10px; }
+        
+        @keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+        
+        .btn-magic { background: linear-gradient(135deg, #00C2CB, #4A306D); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-magic:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0, 194, 203, 0.3); }
+
+        /* Background de Consultório com Overlay Luxo */
+        .bg-consultorio {
+            background-image: linear-gradient(to bottom, rgba(253, 251, 247, 0.92) 0%, rgba(253, 251, 247, 0.85) 100%), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Video Vertical Mágico (Conceito Instagram/Reels) */
+        .video-vertical {
+            aspect-ratio: 9 / 16;
+            max-width: 380px;
+            width: 100%;
+            border-radius: 3rem;
+            box-shadow: 0 40px 80px rgba(74, 48, 109, 0.25);
+            border: 12px solid white;
+            background: #fff;
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #progress { position: fixed; top: 0; left: 0; height: 4px; background: #00C2CB; z-index: 100; transition: width 0.1s; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Estilo Linktree/Instagram */
+        .instagram-badge { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+</head>
+<body class="bg-consultorio antialiased">
+
+    <div id="progress"></div>
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 p-6">
+        <div class="max-w-7xl mx-auto glass rounded-[2.5rem] px-10 py-5 flex justify-between items-center shadow-lg">
+            <div class="font-serif text-3xl font-bold text-magic-purple flex items-center tracking-tight">
+                Dra. Hianni Roscele 
+                <div class="magic-face"><div class="m-eye left"></div><div class="m-eye right"></div><div class="m-smile"></div></div>
+            </div>
+            <div class="hidden md:flex gap-10 items-center font-kids text-magic-purple text-xl font-medium">
+                <a href="#experiencia" class="hover:text-magic-teal transition-colors">A Experiência</a>
+                <a href="#especialidade" class="hover:text-magic-teal transition-colors">A Ciência</a>
+                <a href="#biografia" class="hover:text-magic-teal transition-colors">A Especialista</a>
+                <a href="https://wa.me/5583996151515" class="btn-magic text-white px-8 py-3 rounded-2xl text-sm font-sans tracking-widest uppercase font-bold">Agendar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero: Conceito Instagram Authority -->
+    <header class="min-h-screen flex items-center justify-center pt-40 px-6 relative">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="flex justify-center mb-8 reveal">
+                <a href="https://www.instagram.com/drahianniroscele/" class="flex items-center gap-3 bg-white/50 backdrop-blur-md px-6 py-2 rounded-full border border-magic-purple/10 hover:scale-105 transition-all">
+                    <div class="w-8 h-8 instagram-badge rounded-lg flex items-center justify-center text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.058 2.633.304 3.604 1.275.97.97 1.217 2.237 1.275 3.604.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.058 1.366-.304 2.633-1.275 3.604-.97.97-2.237 1.217-3.604 1.275-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.058-2.633-.304-3.604-1.275-.97-.97-1.217-2.237-1.275-3.604-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.058-1.366.304-2.633 1.275-3.604.97-.97 2.237-1.217 3.604-1.275 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </div>
+                    <span class="text-magic-purple font-kids font-semibold">@drahianniroscele</span>
+                </a>
+            </div>
+            <span class="inline-block bg-magic-teal/20 text-magic-purple font-kids px-8 py-3 rounded-full mb-8 reveal shadow-sm text-lg uppercase tracking-wider font-bold">Odontologia de Luxo com Afeto ♡</span>
+            <h1 class="text-7xl md:text-9xl font-serif font-bold text-magic-purple mb-8 leading-[1.05] reveal">
+                Toda criança merece um <br><span class="text-magic-teal italic">odontopediatra</span> para chamar de seu.
+            </h1>
+            <p class="text-2xl md:text-3xl text-magic-purple/80 mb-12 max-w-3xl mx-auto font-sans font-light leading-relaxed reveal">
+                Onde o desenvolvimento funcional encontra o acolhimento para criar sorrisos que contam histórias felizes.
+            </p>
+            <div class="flex flex-col items-center gap-6 reveal">
+                <a href="https://wa.me/5583996151515" class="btn-magic text-white px-16 py-7 rounded-3xl font-kids text-3xl font-bold inline-block shadow-2xl">Agendar Consulta em João Pessoa</a>
+                <p class="text-magic-purple/40 text-xs tracking-[0.4em] uppercase font-bold">Dra. Hianni Roscele Santos • CRO-PB 8149</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- The Absolute Authority: REELS VERTICAL -->
+    <section id="experiencia" class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-6xl font-serif text-magic-purple mb-6 italic">A Magia do Cuidado</h2>
+                <div class="w-32 h-1.5 bg-magic-teal mx-auto rounded-full"></div>
+                <p class="mt-8 text-magic-purple/60 font-kids text-2xl">Assista como transformamos medo em confiança.</p>
+            </div>
+            <!-- Container ajustado para vídeo VERTICAL -->
+            <div class="max-w-[400px] w-full mx-auto reveal">
+                <div class="video-vertical relative group">
+                    <video id="dra-video" src="assets/hianni_video.mp4" controls playsinline muted class="w-full h-full object-cover"></video>
+                    
+                    <!-- Overlay sutil estilo Instagram -->
+                    <div class="absolute top-6 left-6 flex items-center gap-3 pointer-events-none opacity-80">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center font-serif font-bold text-magic-purple shadow-md">H</div>
+                        <div class="text-white text-sm font-bold drop-shadow-md">Dra. Hianni Roscele</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Authority (Informações do Instagram & Ciência) -->
+    <section id="especialidade" class="py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center glass rounded-[4rem] p-12 md:p-24 shadow-2xl border-4 border-white/50">
+            <div class="reveal">
+                <h2 class="text-6xl md:text-8xl font-serif text-magic-purple mb-12">Excelência <br><i class="text-magic-teal italic">Técnica</i> e Doçura.</h2>
+                <div class="space-y-16">
+                    <div class="flex gap-8 group">
+                        <div class="w-20 h-20 bg-magic-teal text-white rounded-[2rem] flex items-center justify-center text-4xl shadow-xl group-hover:rotate-6 transition-transform">🦷</div>
+                        <div class="flex-1">
+                            <h4 class="font-kids text-3xl text-magic-purple mb-3">Ortopedia Funcional (OFM)</h4>
+                            <p class="text-magic-purple/70 text-xl leading-relaxed font-light">Corrigimos o crescimento da face e a postura bucal antes mesmo de precisar de aparelhos fixos. Ciência que previne problemas graves.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 group">
+                        <div class="w-20 h-20 bg-magic-pink text-white rounded-[2rem] flex items-center justify-center text-4xl shadow-xl group-hover:-rotate-6 transition-transform">✨</div>
+                        <div class="flex-1">
+                            <h4 class="font-kids text-3xl text-magic-purple mb-3">Mínima Intervenção</h4>
+                            <p class="text-magic-purple/70 text-xl leading-relaxed font-light">Abordagem biológica que preserva os dentes naturais usando laser e tecnologia digital. Conforto total para o seu filho.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 group">
+                        <div class="w-20 h-20 bg-magic-yellow text-white rounded-[2rem] flex items-center justify-center text-4xl shadow-xl group-hover:rotate-6 transition-transform">🤱</div>
+                        <div class="flex-1">
+                            <h4 class="font-kids text-3xl text-magic-purple mb-3">Embasamento Científico</h4>
+                            <p class="text-magic-purple/70 text-xl leading-relaxed font-light">Formação pela Universidade Estadual da Paraíba e atualização clínica constante para oferecer o melhor da odontopediatria moderna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal" style="transition-delay: 200ms;">
+                <div class="bg-white p-12 rounded-[4rem] shadow-2xl border-4 border-magic-bg relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-magic-pink/10 rounded-full blur-3xl"></div>
+                    <h3 class="text-4xl font-serif text-magic-purple mb-8 italic">Por que escolher a Dra. Hianni?</h3>
+                    <div class="space-y-8">
+                        <div class="p-6 bg-magic-bg rounded-3xl border border-magic-teal/10">
+                            <p class="text-magic-purple/80 text-lg font-medium italic">"Toda criança merece um atendimento que respeite seu tempo e suas emoções."</p>
+                        </div>
+                        <ul class="space-y-6 text-magic-purple/80 font-sans text-lg">
+                            <li class="flex items-start gap-4">
+                                <span class="text-magic-teal text-2xl">✔</span>
+                                <p><strong>Ambiente Sensorial:</strong> Consultório planejado para reduzir o estresse infantil.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-magic-teal text-2xl">✔</span>
+                                <p><strong>Psicologia Aplicada:</strong> Técnicas de condicionamento positivo em cada etapa.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Dicas: O Diário Mágico da Dra. Hianni -->
+    <section id="dicas" class="py-32 px-6 bg-magic-bg/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="text-magic-teal font-kids font-bold text-xl mb-4 block">Espaço Educativo ♡</span>
+                <h2 class="text-5xl md:text-7xl font-serif text-magic-purple">Dicas da <i class="text-magic-teal italic">Doutora</i></h2>
+                <p class="mt-6 text-magic-purple/60 text-xl max-w-2xl mx-auto font-light">Pílulas de conhecimento para guiar o crescimento saudável do seu bem mais precioso.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Dica 1 -->
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border-b-8 border-magic-teal hover:-translate-y-2 transition-all reveal">
+                    <div class="text-4xl mb-6">🗓️</div>
+                    <h3 class="font-kids text-2xl text-magic-purple mb-4">A Primeira Janela</h3>
+                    <p class="text-magic-purple/70 leading-relaxed font-light mb-6">O momento ideal da primeira consulta é até o <strong>primeiro ano de vida</strong>. É aqui que prevenimos o medo e orientamos sobre a higiene dos primeiros dentinhos.</p>
+                    <span class="text-magic-teal font-bold text-xs uppercase tracking-widest">#PrevençãoMágica</span>
+                </div>
+
+                <!-- Dica 2 -->
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border-b-8 border-magic-pink hover:-translate-y-2 transition-all reveal" style="transition-delay: 200ms;">
+                    <div class="text-4xl mb-6">🍭</div>
+                    <h3 class="font-kids text-2xl text-magic-purple mb-4">Açúcar e Infância</h3>
+                    <p class="text-magic-purple/70 leading-relaxed font-light mb-6">A introdução do açúcar deve ser evitada até os <strong>2 anos</strong>. Isso protege o paladar da criança e evita a formação precoce de cáries agressivas.</p>
+                    <span class="text-magic-pink font-bold text-xs uppercase tracking-widest">#SaúdeBebê</span>
+                </div>
+
+                <!-- Dica 3 -->
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border-b-8 border-magic-yellow hover:-translate-y-2 transition-all reveal" style="transition-delay: 400ms;">
+                    <div class="text-4xl mb-6">👄</div>
+                    <h3 class="font-kids text-2xl text-magic-purple mb-4">Respiração Bucal</h3>
+                    <p class="text-magic-purple/70 leading-relaxed font-light mb-6">Dormir de boca aberta? Pode ser um sinal de alerta para a <strong>Ortopedia Funcional</strong>. Corrigir isso cedo garante um sono melhor e face harmônica.</p>
+                    <span class="text-magic-yellow font-bold text-xs uppercase tracking-widest">#OFMComAmor</span>
+                </div>
+            </div>
+
+            <!-- CTA Instagram Restaurado -->
+            <div class="mt-20 text-center reveal">
+                <a href="https://www.instagram.com/drahianniroscele/" class="inline-flex items-center gap-4 text-magic-purple font-kids text-2xl hover:text-magic-teal transition-all group">
+                    <span>Acompanhe mais dicas no meu Instagram</span>
+                    <div class="w-12 h-12 instagram-badge rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.058 2.633.304 3.604 1.275.97.97 1.217 2.237 1.275 3.604.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.058 1.366-.304 2.633-1.275 3.604-.97.97-2.237 1.217-3.604 1.275-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.058-2.633-.304-3.604-1.275-.97-.97-1.217-2.237-1.275-3.604-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.058-1.366.304-2.633 1.275-3.604.97-.97 2.237-1.217 3.604-1.275 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Biografia Autoridade -->
+    <section id="biografia" class="py-32 px-6">
+        <div class="max-w-5xl mx-auto text-center reveal">
+            <h2 class="text-6xl font-serif text-magic-purple mb-12">A Especialista ♡</h2>
+            
+            <div class="bg-white/80 backdrop-blur-md p-16 rounded-[4rem] shadow-2xl text-left border-4 border-white">
+                <div class="mb-12 text-center md:text-left">
+                    <h3 class="text-5xl font-serif text-magic-purple font-bold mb-2">Dra. Hianni Roscele Santos</h3>
+                    <p class="text-magic-teal font-bold tracking-[0.2em] uppercase text-xl">CRO-PB 8149</p>
+                </div>
+                
+                <div class="space-y-6 text-magic-purple/80 text-xl font-light leading-relaxed">
+                    <p>Referência em <strong>Odontopediatria e Ortopedia Funcional dos Maxilares</strong> na Paraíba, a <strong>Dra. Hianni Roscele</strong> une a excelência técnica da graduação pela Universidade Estadual da Paraíba com um atendimento humanizado de altíssimo padrão.</p>
+                    <p>Com atuação focada em João Pessoa e Campina Grande, ela é pesquisadora ativa na área de maloclusões e hipersensibilidade, trazendo as tecnologias mais avançadas para o cuidado dos pequenos.</p>
+                    <p>Sua missão é clara: garantir que cada consulta seja uma semente de saúde e confiança, cuidando do desenvolvimento facial harmônico para que o sorriso do seu filho brilhe para sempre.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="agendar" class="py-40 bg-magic-purple text-white text-center relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 relative z-10 reveal">
+            <h2 class="text-6xl md:text-9xl font-serif mb-16 leading-tight">Agende essa <br><i class="text-magic-yellow italic">Experiência Mágica</i>.</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <a href="https://wa.me/5583996151515" class="bg-magic-teal text-white px-10 py-6 rounded-3xl font-kids text-2xl font-bold shadow-2xl hover:scale-105 transition-all">João Pessoa 📍</a>
+                <a href="https://wa.me/5583996151515" class="bg-magic-pink text-white px-10 py-6 rounded-3xl font-kids text-2xl font-bold shadow-2xl hover:scale-105 transition-all">Campina Grande 📍</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-white text-center border-t border-magic-purple/5 px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-magic-purple font-serif text-3xl font-bold">Dra. Hianni Roscele</div>
+            <div class="text-magic-purple/40 text-xs font-sans tracking-widest uppercase font-bold">
+                Odontopediatria & Ortopedia • João Pessoa • Campina Grande • CRO-PB 8149
+            </div>
+            <div class="flex gap-8">
+                <!-- Instagram Lúdico -->
+                <a href="https://www.instagram.com/drahianniroscele/" class="group flex items-center justify-center w-14 h-14 bg-magic-teal/10 rounded-2xl hover:bg-magic-teal hover:scale-110 transition-all duration-300 shadow-sm">
+                    <svg class="w-7 h-7 text-magic-teal group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.058 2.633.304 3.604 1.275.97.97 1.217 2.237 1.275 3.604.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.058 1.366-.304 2.633-1.275 3.604-.97.97-2.237 1.217-3.604 1.275-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.058-2.633-.304-3.604-1.275-.97-.97-1.217-2.237-1.275-3.604-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.058-1.366.304-2.633 1.275-3.604.97-.97 2.237-1.217 3.604-1.275 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.281-.058-1.689-.072-4.948-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <!-- WhatsApp Lúdico -->
+                <a href="https://wa.me/5583996151515" class="group flex items-center justify-center w-14 h-14 bg-magic-pink/10 rounded-2xl hover:bg-magic-pink hover:scale-110 transition-all duration-300 shadow-sm">
+                    <svg class="w-7 h-7 text-magic-pink group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.143 1.44 4.747 1.441 5.483 0 9.95-4.466 9.952-9.948 0-2.656-2.11-5.155-3.997-7.042-1.887-1.887-4.388-2.926-7.044-2.927-5.482 0-9.948 4.468-9.95 9.948 0 1.925.56 3.516 1.492 4.948l-1.02 3.721 3.82-1.002zM17.657 14.535c-.302-.15-.178-.302-1.785-.905-.302-.151-.524-.226-.726.075s-.782.905-.957 1.107-.352.226-.655.075c-1.124-.54-1.925-.893-2.697-2.217-.302-.503.302-.454.856-1.56.075-.151.038-.28-.019-.381s-.726-1.745-.995-2.394c-.26-.628-.524-.523-.726-.534s-.403-.013-.605-.013-.529.075-.806.377c-.277.302-1.058 1.033-1.058 2.518s1.083 2.919 1.235 3.121c.151.201 2.13 3.251 5.159 4.557.72.311 1.282.496 1.721.635.722.221 1.378.19 1.898.113.579-.085 1.785-.73 2.037-1.434.252-.704.252-1.308.176-1.434s-.277-.201-.579-.352z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <p class="mt-12 text-[10px] opacity-10 uppercase tracking-widest font-bold">Design by Konig Systems</p>
+    </footer>
+
+    <script>
+        const lenis = new Lenis({ duration: 1.5 });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement, b = document.body, st = 'scrollTop', sh = 'scrollHeight';
+            const percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+            document.getElementById('progress').style.width = percent + '%';
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = document.getElementById('dra-video');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (video && entry.target.contains(video)) {
+                        video.play().catch(error => console.log("Autoplay mudo iniciado."));
+                    }
+                } else {
+                    if (video && entry.target.contains(video)) {
+                        video.pause();
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

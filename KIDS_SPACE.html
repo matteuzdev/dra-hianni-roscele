@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço Kids | Dra. Hianni Roscele</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #FDFBF7; font-family: 'Fredoka', sans-serif; overflow-x: hidden; }
+        .canvas-container { position: relative; width: 100%; max-width: 800px; height: 600px; margin: 0 auto; background: white; border-radius: 3rem; box-shadow: 0 20px 50px rgba(0,0,0,0.05); border: 8px solid white; overflow: hidden; }
+        canvas { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="%2300C2CB" opacity="0.5"/></svg>') 16 16, auto; width: 100%; height: 100%; position: absolute; z-index: 10; }
+        
+        .palette-btn { width: 50px; height: 50px; border-radius: 1.5rem; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 4px solid white; box-shadow: 0 8px 15px rgba(0,0,0,0.05); }
+        .palette-btn:hover { transform: scale(1.1) rotate(5deg); }
+        .palette-btn.active { transform: scale(1.2); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: #4A306D; }
+
+        .drawing-option { cursor: pointer; border-radius: 1.5rem; overflow: hidden; border: 4px solid white; transition: all 0.3s ease; }
+        .drawing-option:hover { transform: translateY(-5px); border-color: #00C2CB; }
+        .drawing-option.active { border-color: #00C2CB; box-shadow: 0 10px 20px rgba(0, 194, 203, 0.2); }
+    </style>
+</head>
+<body class="min-h-screen p-6">
+
+    <div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+        <a href="LANDING_PAGE_HIANNI.html" class="text-white bg-magic-purple px-8 py-3 rounded-2xl font-bold shadow-lg hover:scale-105 transition-all">⬅ Voltar ao Site</a>
+        <div class="text-center">
+            <h1 class="text-5xl text-magic-purple font-bold mb-2">Espaço Kids Mágico 🎨</h1>
+            <p class="text-magic-purple/60">Escolha um desenho e comece a colorir!</p>
+        </div>
+        <div class="flex gap-4">
+            <button onclick="clearCanvas()" class="bg-white text-magic-purple px-6 py-3 rounded-2xl font-bold shadow-md hover:bg-gray-50 transition-all">Limpar Tudo 🧽</button>
+            <button onclick="downloadImage()" class="bg-magic-teal text-white px-8 py-3 rounded-2xl font-bold shadow-lg hover:scale-105 transition-all">Salvar Desenho 🖼️</button>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-4 gap-8">
+        
+        <!-- Sidebar: Escolha de Desenhos -->
+        <div class="lg:col-span-1 space-y-4">
+            <h2 class="text-xl text-magic-purple font-bold mb-4">Escolha o Desenho:</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-1 gap-4">
+                <div class="drawing-option active" onclick="setDrawing('tooth', this)">
+                    <img src="https://img.freepik.com/free-vector/happy-tooth-cartoon-character_1308-111051.jpg?t=st=1715450000~exp=1715453600~hmac=..." alt="Dente Feliz" class="w-full h-32 object-contain bg-white p-2">
+                </div>
+                <div class="drawing-option" onclick="setDrawing('brush', this)">
+                    <img src="https://img.freepik.com/free-vector/toothbrush-with-toothpaste-cartoon_1308-110000.jpg?..." alt="Escova Amiga" class="w-full h-32 object-contain bg-white p-2">
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de Pintura Principal -->
+        <div class="lg:col-span-3">
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                
+                <!-- Cores -->
+                <div class="flex md:flex-col gap-3 bg-white p-4 rounded-[2rem] shadow-xl border border-gray-100 flex-wrap justify-center">
+                    <button onclick="setColor('#00C2CB', this)" class="palette-btn active" style="background: #00C2CB;"></button>
+                    <button onclick="setColor('#FF9EAA', this)" class="palette-btn" style="background: #FF9EAA;"></button>
+                    <button onclick="setColor('#FFD93D', this)" class="palette-btn" style="background: #FFD93D;"></button>
+                    <button onclick="setColor('#4A306D', this)" class="palette-btn" style="background: #4A306D;"></button>
+                    <button onclick="setColor('#77DD77', this)" class="palette-btn" style="background: #77DD77;"></button>
+                    <button onclick="setColor('#AEC6CF', this)" class="palette-btn" style="background: #AEC6CF;"></button>
+                    <button onclick="setColor('#FFFFFF', this)" class="palette-btn" style="background: #FFFFFF;" title="Borracha">🧽</button>
+                </div>
+
+                <!-- Canvas -->
+                <div class="canvas-container flex-1">
+                    <canvas id="kids-paint"></canvas>
+                    <!-- Imagem de Fundo (O Desenho para Colorir) -->
+                    <img id="drawing-bg" src="https://img.freepik.com/free-vector/happy-tooth-cartoon-character_1308-111051.jpg" class="absolute inset-0 w-full h-full object-contain p-12 opacity-30 pointer-events-none" alt="Desenho para Colorir">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('kids-paint');
+        const ctx = canvas.getContext('2d');
+        let painting = false;
+        let currentColor = '#00C2CB';
+        const drawingBg = document.getElementById('drawing-bg');
+
+        const drawings = {
+            tooth: 'https://img.freepik.com/free-vector/happy-tooth-cartoon-character_1308-111051.jpg',
+            brush: 'https://img.freepik.com/free-vector/toothbrush-with-toothpaste-cartoon_1308-110000.jpg'
+        };
+
+        function resize() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }
+        window.addEventListener('load', resize);
+        window.addEventListener('resize', resize);
+
+        function setColor(color, btn) {
+            currentColor = color;
+            document.querySelectorAll('.palette-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function setDrawing(type, el) {
+            drawingBg.src = drawings[type];
+            document.querySelectorAll('.drawing-option').forEach(d => d.classList.remove('active'));
+            el.classList.add('active');
+            clearCanvas();
+        }
+
+        function startPosition(e) { painting = true; draw(e); }
+        function finishedPosition() { painting = false; ctx.beginPath(); }
+        
+        function draw(e) {
+            if(!painting) return;
+            
+            ctx.lineWidth = currentColor === '#FFFFFF' ? 40 : 15;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.strokeStyle = currentColor;
+            
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+            const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+            
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('mouseup', finishedPosition);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseout', finishedPosition);
+        
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startPosition(e.touches[0]); }, {passive: false});
+        canvas.addEventListener('touchend', finishedPosition);
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e.touches[0]); }, {passive: false});
+
+        function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'meu-desenho-magico.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Hianni Roscele | Onde o Cuidado vira Magia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Outfit:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magic: { teal: '#00C2CB', pink: '#FF9EAA', yellow: '#FFD93D', purple: '#4A306D', bg: '#FDFBF7' }
+                    },
+                    fontFamily: { kids: ['"Fredoka"', 'sans-serif'], sans: ['"Outfit"', 'sans-serif'], serif: ['"Playfair Display"', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FDFBF7; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(15px); border: 2px solid rgba(255, 255, 255, 0.4); }
+        
+        /* Personagem Olhos e Boca (O que o Soberano amou) */
+        .magic-face { position: relative; display: inline-block; margin-left: 10px; width: 40px; height: 30px; vertical-align: middle; }
+        .m-eye { width: 8px; height: 10px; background: #4A306D; border-radius: 50%; position: absolute; top: 0; animation: blink 3s infinite; }
+        .m-eye.left { left: 5px; } .m-eye.right { right: 5px; }
+        .m-smile { width: 20px; height: 8px; border-bottom: 3px solid #4A306D; border-radius: 50%; position: absolute; bottom: 5px; left: 10px; }
+        
+        @keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+        
+        .hero-gradient { background: radial-gradient(circle at 70% 30%, #FF9EAA22 0%, transparent 50%), radial-gradient(circle at 10% 70%, #00C2CB11 0%, transparent 50%); }
+        .btn-magic { background: linear-gradient(135deg, #00C2CB, #4A306D); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-magic:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 194, 203, 0.3); }
+
+        /* Bento Grid Style (A versão que estava excelente) */
+        .bento-item { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .bento-item:hover { transform: scale(1.02); }
+
+        /* Antes e Depois (Limpeza) - Usando a imagem real */
+        .clean-area { position: relative; width: 350px; height: 350px; margin: 0 auto; cursor: crosshair; border-radius: 2rem; overflow: hidden; background: white; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 4px solid rgba(0,194,203,0.2); }
+        .tooth-dirty { width: 100%; height: 100%; object-fit: cover; }
+        .tooth-clean-mask { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: circle(0% at 50% 50%); transition: clip-path 0.1s ease-out; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+</head>
+<body class="hero-gradient">
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 p-6">
+        <div class="max-w-7xl mx-auto glass rounded-3xl px-8 py-4 flex justify-between items-center shadow-sm">
+            <div class="font-serif text-2xl font-bold text-magic-purple flex items-center">
+                Dra. Hianni Roscele 
+                <div class="magic-face"><div class="m-eye left"></div><div class="m-eye right"></div><div class="m-smile"></div></div>
+            </div>
+            <div class="hidden md:flex gap-8 items-center font-kids text-magic-purple text-lg">
+                <a href="#experiencia" class="hover:text-magic-teal transition-colors">O Método</a>
+                <a href="KIDS_SPACE.html" class="text-magic-pink font-bold hover:scale-105 transition-transform">Espaço Kids 🎨</a>
+                <a href="#agendar" class="btn-magic text-white px-6 py-2 rounded-xl text-sm font-sans tracking-widest uppercase">Agendar Consulta</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Versão que estava "quase perfeita", agora com a foto certa) -->
+    <section class="min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="inline-block bg-magic-teal/10 text-magic-teal font-kids px-6 py-2 rounded-full mb-6">Acolher para Curar</span>
+                <h1 class="text-6xl md:text-8xl font-serif font-bold text-magic-purple mb-6 leading-tight">
+                    O Sorriso que <br><span class="text-magic-teal italic">Encanta.</span>
+                </h1>
+                <p class="text-xl text-magic-purple/70 mb-10 max-w-lg font-sans font-light">
+                    Transformamos a saúde bucal do seu filho em uma jornada mágica, respeitando o tempo da criança com a autoridade de quem ama o que faz.
+                </p>
+                <a href="#agendar" class="btn-magic text-white px-12 py-5 rounded-2xl font-kids text-2xl font-bold inline-block">Conhecer a Dra. Hianni</a>
+            </div>
+            <div class="relative">
+                <div class="rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl aspect-[4/5] relative group">
+                    <!-- Foto Real (Apenas a imagem, sem legendas feias) -->
+                    <img src="assets/dra_hianni.jpg" alt="Dra. Hianni Roscele" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-magic-purple/40 to-transparent"></div>
+                </div>
+                <!-- Elementos flutuantes atrás -->
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-magic-yellow/30 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -top-10 -left-10 w-64 h-64 bg-magic-pink/20 rounded-full blur-3xl -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Método (Inserindo o Vídeo com Som como solicitado, na estrutura Bento que estava boa) -->
+    <section id="experiencia" class="py-32 bg-white rounded-t-[5rem] -mt-20 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.02)]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-serif text-magic-purple mb-6">Autoridade e <i class="text-magic-teal">Doçura</i></h2>
+                <p class="text-xl text-magic-purple/60 max-w-2xl mx-auto">Uma experiência de alto padrão desenhada exclusivamente para eliminar traumas e construir confiança.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[320px]">
+                
+                <!-- Vídeo Real da Dra (COM SOM E CONTROLES) -->
+                <div class="md:col-span-2 md:row-span-2 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white bg-gray-100 relative group bento-item">
+                    <video src="assets/hianni_video.mp4" controls playsinline class="w-full h-full object-cover"></video>
+                    <!-- Overlay sutil apenas para quando o vídeo não estiver rodando (removível via js, mas nativo com controls já basta) -->
+                </div>
+
+                <div class="md:col-span-2 glass rounded-[3rem] p-12 flex flex-col justify-center bg-gradient-to-br from-white to-magic-teal/10 bento-item border border-magic-teal/20">
+                    <h3 class="text-4xl font-serif text-magic-purple mb-4">Ortopedia Funcional</h3>
+                    <p class="text-lg text-magic-purple/70">Acompanhamos e corrigimos o desenvolvimento ósseo e respiratório da face do seu filho desde cedo, garantindo saúde para a vida toda.</p>
+                </div>
+
+                <div class="bg-magic-pink rounded-[3rem] p-10 text-white flex flex-col justify-center bento-item shadow-xl shadow-magic-pink/20">
+                    <h3 class="text-3xl font-kids mb-2">Primeira Infância</h3>
+                    <p class="opacity-90 font-sans">Sem brocas, sem dor. Apenas o tempo da criança.</p>
+                </div>
+
+                <!-- Foto da criança no consultório (Substituindo bloco amarelo sem graça) -->
+                <div class="rounded-[3rem] overflow-hidden bento-item relative group shadow-xl">
+                    <img src="assets/dente_limpo_ou_crianca.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Criança Sorrindo no Consultório">
+                    <div class="absolute inset-0 bg-gradient-to-t from-magic-purple/80 to-transparent flex items-end p-8">
+                        <p class="text-white font-kids text-2xl">Ambiente Seguro ✨</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Limpeza Interativa (A Magia para os Pais verem) -->
+    <!-- Restaurado EXATAMENTE com a mecânica que funcionava, mas com as fotos pedidas e no lugar certo -->
+    <section class="py-32 bg-[#FAFAFA] text-center">
+        <h2 class="text-4xl md:text-5xl font-serif text-magic-purple mb-4">O poder da <span class="text-magic-teal">Prevenção</span></h2>
+        <p class="text-xl text-magic-purple/60 mb-16 font-kids">Passe o mouse por cima do dentinho e limpe a sujeira!</p>
+        
+        <div class="flex justify-center">
+            <div class="clean-area group" onmousemove="brush(event)" ontouchmove="brush(event)">
+                <!-- Imagem do dente sujo baixado -->
+                <img src="assets/dente_sujo.jpg" class="tooth-dirty absolute inset-0" alt="Dente Sujo">
+                <!-- Máscara revelando o dente limpo (usando uma versão CSS clara ou o dente limpo se houver) -->
+                <div class="tooth-clean-mask absolute inset-0 bg-white" id="clean-tooth">
+                    <!-- Como a imagem "dente_limpo" foi usada para a criança, criei um SVG perfeito para o dente limpo revelado -->
+                    <div class="w-full h-full flex items-center justify-center bg-magic-teal/5">
+                        <svg viewBox="0 0 100 100" class="w-2/3 h-2/3 text-white fill-current drop-shadow-2xl">
+                            <path d="M50 90 C30 90 20 70 20 50 C20 30 30 10 50 10 C70 10 80 30 80 50 C80 70 70 90 50 90 Z M40 85 L40 60 C40 55 60 55 60 60 L60 85" stroke="#00C2CB" stroke-width="2"/>
+                            <path d="M30 30 Q35 20 45 25" stroke="#FFD93D" stroke-width="3" stroke-linecap="round" fill="none"/>
+                            <!-- Rostinho feliz -->
+                            <circle cx="40" cy="45" r="3" fill="#4A306D"/>
+                            <circle cx="60" cy="45" r="3" fill="#4A306D"/>
+                            <path d="M45 55 Q50 60 55 55" stroke="#4A306D" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <span class="bg-white/90 px-6 py-3 rounded-full text-magic-teal font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity font-kids">✨ Limpando...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="agendar" class="py-32 bg-magic-purple text-white text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-serif mb-10">O sorriso do seu filho merece <i class="text-magic-yellow">essa experiência.</i></h2>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="https://wa.me/seunumeroaqui" class="bg-magic-teal text-white px-12 py-6 rounded-[2rem] font-kids text-2xl font-bold shadow-2xl hover:scale-105 transition-all border-2 border-transparent">Agendar Consulta</a>
+                <a href="KIDS_SPACE.html" class="bg-white text-magic-purple px-12 py-6 rounded-[2rem] font-kids text-2xl font-bold shadow-2xl hover:scale-105 transition-all border-2 border-transparent hover:border-magic-pink">Visitar Espaço Kids 🎨</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-white text-center border-t border-gray-100">
+        <p class="text-magic-purple font-serif text-2xl mb-2 font-bold">Dra. Hianni Roscele</p>
+        <p class="text-magic-purple/50 text-sm font-sans tracking-widest">ODONTOPEDIATRIA & ORTOPEDIA FUNCIONAL • JOÃO PESSOA</p>
+    </footer>
+
+    <script>
+        // Lógica de Limpeza do Dente
+        function brush(e) {
+            e.preventDefault();
+            const clean = document.getElementById('clean-tooth');
+            const rect = e.target.getBoundingClientRect();
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            
+            if(clientX && clientY) {
+                const x = ((clientX - rect.left) / rect.width) * 100;
+                const y = ((clientY - rect.top) / rect.height) * 100;
+                clean.style.clipPath = `circle(30% at ${x}% ${y}%)`;
+            }
+        }
+
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
+</body>
+</html>
